@@ -1,0 +1,802 @@
+@import url('https://fonts.googleapis.com/css2?family=Maitree:wght@400;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Maitree', serif;
+
+}
+body{
+    counter-reset: list-counter;
+}
+:root{
+    --main-color:#4e464f;
+    --main-color1:#8d7535;
+    --color-hover:#5b4b22;
+}
+.container{
+    margin: auto;
+    width: 1300px;
+}
+.contact{
+    width: 107%;
+    height: 26px;
+    margin: auto;
+    background-color: transparent;
+    display: flex;
+    /* margin-left: auto; */
+    /* padding-right: 13px; */
+    justify-content: flex-end;
+}
+.contact > nav {
+    width: 48%;
+}
+.contact > nav > ul{
+    /* width: 100%; */
+    display: flex;
+    /* padding-right: 116px; */
+    /* margin-right: 100px; */
+    justify-content: center;
+    /* width: 38px; */
+    /* height: 10px; */
+    /* padding: 0; */
+}
+
+.contact > nav > ul > li{
+    padding: 0 15px;
+    border-right: solid 1px white;
+}
+
+h2{
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.header{
+    background-color:transparent;
+    width:100vw;
+    position: fixed;
+    z-index: 99;
+}
+.header::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transform: translateY(-100%);
+    z-index: -1;
+}
+.header.active::before {
+    transform: translateY(0);
+    transition: all 0.4s ease;
+}
+.row.active ul > li > a {
+    color: black;
+    transition: all 1s ease;
+}
+.header .logo{
+    width: 115px;
+    /* height: 100%; */
+    position: static;
+    transform: translateY(-15px);
+}
+
+.header .logo img{
+    width: 100%;
+    height: 100%;
+}
+.row{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    align-items: end;
+    height: 69px;
+    text-align: center;
+}
+ul{
+    list-style-type:none;
+}
+
+ul li{
+    justify-content: space-between;
+    padding: 12px  20px;
+}
+
+ul > li > a{
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    text-transform: none;
+}
+.btOrder{
+    text-align: center;
+    width: 105px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: var(--main-color1);
+    color: white;
+    text-transform: uppercase;
+    border: 0;
+}
+.btOrder:hover{
+    background-color: #5b4b22;
+}
+
+.search-icon input{
+    width: 100%;
+    border-radius: 7px;
+    height: 40px; 
+    padding-left: 40px;
+    font-size: 15px;
+}
+
+.search-icon.active{
+   width: 420px;
+   display: block;
+   opacity: unset;/*less understand but reset lai gtri opacity là none*/
+}
+.search-icon{
+    opacity: 0;/*dislay none ẩn hoàn toàn ko kế thừa thuộc tính cha, opacity chỉ làm mờ đi và nhường chổ*/
+    width: 0;
+    position: relative;
+    transition: all .5s ease;
+}
+.search-icon i:last-child{
+    position: absolute;
+    right: 10px;
+    padding-top: 10px;
+    font-size: 16px;
+}
+.fa-times{
+    position: absolute;
+    color: var(--main-color1);
+    left: 10px;
+    font-size: 40px;
+}
+.menu-bar-left{
+    width: 420px;
+    /* height: 45px; */
+    /* margin-top: 0px; */
+}
+.menu-bar-left li:first-child{
+    padding-right: 5px;
+}
+.muli{
+    position: absolute;
+    z-index: 3;
+}
+.fas{
+    cursor: pointer;
+    color: var(--main-color1);
+  
+}
+.menu-bar-items-sub1{
+    /* visibility: hidden; */
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 200px;
+    top: 65px;
+    box-shadow: 0 5px 5px rgb(0 0 0 / 19%);
+    transform: translateX(-70px);
+    border: 1px solid #ccc;
+    transition: 0.2s ;
+}
+.menu-bar-items-sub1 > li{
+    margin: 0 15px;
+    border-bottom: 1px solid rgba(0,0,0,.3);
+}
+.menu-bar-items-sub1 > li > a{
+    color: black !important;
+}
+
+.menu-bar-items-sub:hover .menu-bar-items-sub1{
+    /* visibility: visible; */
+    display: block;
+}
+.menu-bar-items-sub1 > li:hover > a{
+    color: var(--main-color1) !important;
+}
+
+/*...................big images..............*/
+.imageMain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;/*dấu đi phần bị tràn khi ảnh lớn ra*/
+}
+.imageMain::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("/images/logo/main1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;/*nền ko cuộn theo khug nhìn*/
+    z-index: -2;
+    animation: InOut 30s infinite;
+}
+@keyframes InOut{
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+
+}
+.imageMain::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,.3)),linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.05));
+    transform: rotate(180deg);
+    z-index: -2;
+}
+.imageMain-content{
+    text-align: center;
+    max-width: 800px;
+    align-items: center;
+}
+
+.imageMain-content-textsmall h2{
+   font-size: 50sp;
+   color: #fff;
+}
+/*......................introduce...............*/
+.block-introduce{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
+    margin: 50px auto;
+}
+.center{
+    display: flex;
+    margin-bottom: 30px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    
+}
+.block-introduce-title-small > p{
+    margin-bottom: 15px;
+}
+.center::before{
+    content: "";
+    width: 52px; /*lấy with nhỏ nên chỉ lấy một phần góc trái của ảnh*/
+    height: 26px;
+    margin-right: 15px;
+    background-size: 500px 300px;
+    background-image: url("/images/logo/sprites.png");
+}
+.center::after{
+    content: "";
+    margin-left: 15px;
+    width: 52px;
+    height: 26px;
+    background-size: 500px 300px;
+    background-image: url("/images/logo/sprites.png");
+}
+/*........................locator.............*/
+
+.locator-store{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.locator-store::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("/images/big/locator.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -2;
+}
+.locator-store::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,.6)),linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.05));
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -2;
+}
+.locator-store-title{
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    color: white;
+    /* padding-top: 50px; */
+    margin: 50px 0;
+}
+.obj{
+    color: white;
+    width: 80%;
+}
+.content-contact-inner{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.input {
+    display: flex;
+}
+.input input{
+    width: 300px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 20px;
+    font-size: 15px;
+    box-shadow: inset 0 0 15px 0 rgb(0 0 0 / 7%);
+}
+.label > div{
+    color: black;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.time select{
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.order-party-form{
+    width: 680px;
+    height: 550px;
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+}
+form{
+    width: 95%;
+    margin-left: 0 auto;
+    transform: translateX(16px);
+    margin: 10PX;
+}
+.submit button{
+    color: white;
+    width: 100px;
+    height: 50px;
+    background-color: #8d7535;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+form div{
+    margin-top: 10px;
+}
+.contact > li{
+    margin-top: 60px;
+    background-color: white;
+    border-radius: 5px;
+    width: 280px;
+    height: 50px;
+    position: relative;
+
+}
+.contact > li::before{
+    counter-increment: list-counter;
+    content: counter(list-counter);
+    position: absolute;
+    color: #fff;
+    padding: 6px 0;
+    text-align: center;
+    z-index: 2;
+    top: -18px;
+    left: -18px;
+    line-height: 1;
+}
+.contact > li::after{
+    background-color: #8d7535;
+    position: absolute;
+    border-radius: 50%;
+    content: '';
+    top: -24px;
+    left: -32px;
+    width: 40px;
+    height: 40px;
+}
+.contact > li  span{
+    font-size: 20;
+    text-transform: uppercase;
+    color: var(--main-color1);
+    font-weight: 700;
+}
+.locator-store-list{
+    width: 400px;
+    /* margin: auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+/*............................space....................*/
+
+.space{
+    margin: 50px auto;
+}
+.space .space-party{
+    background-image: url("/images/nền/Untitled-2-e1564803156486.jpg");
+    padding: 70px 100px;
+
+}
+.space-party-content{   
+    text-align: center;
+    background-color: transparent;
+    width: 490px;
+    position: relative;
+
+}
+.deti{
+    position: absolute;
+    left: 27%;
+    top: 140%;
+    border-top: 1px solid var(--main-color1);
+    width: 236px;
+    height: 82px;
+}
+
+.bt-deti{
+    width: 105px;
+    height: 40px;
+    background-color: var(--main-color1);
+    border: none;
+    cursor: pointer;
+    color: white;
+    transform: translateY(15px);
+}
+.bt-deti:hover{
+   background-color: var(--color-hover);
+}
+.space-party-img img{
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.6s ease-in-out;
+}
+.space-party-img{
+    overflow: hidden;/*cố điịnh ảnh trog khung*/
+    width: 500px;
+    height: 400px;
+}
+.space-party-img img:hover{
+    transform: scale(1.1);
+}
+.space-party-row{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    height: 470px;
+    
+}
+.space-party-row:nth-child(even){
+    flex-direction: row-reverse;/*dảo các div chẵn(even)*/
+}
+/*.....................................food*/
+.food-title p{
+    text-align: center;
+    width: 55%;
+    margin: 0 auto;
+    align-items: center;
+    font-size: 18px;
+    transform: translateY(-15px);
+}
+.food-list-itme{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 25px auto;
+    justify-content: center;
+}
+
+.food-list-itme img{
+
+    width: calc(100%/4);
+    border: 1px solid red;
+    margin: 20px 20px;
+    cursor: pointer;
+    overflow: hidden;
+}
+/* .food-list-itme span{
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top:0;
+}
+.food-list-itme:hover > span{
+    background-color: rgba(121,0,0,.42); ;
+    transition: all 0.3s ease;
+} */
+.food{
+    width: 80%;
+    margin: auto;
+}
+.food-list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    justify-content: center;
+}
+.zoomOver-wrap{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: rgba(86,83,83,34); */
+    background-color: rgba(0,0,0,.6);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 99;
+    display: none;
+    /* opacity: 0.5; */
+
+}
+.zoomOver{
+    width: 50%;
+    border-radius: 5px;
+    position: relative;
+}
+.zoomOver span{
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    /* right: -16px; */
+    left: 97%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -4%;
+    opacity: 0.7;
+}
+.food-elective-items{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    display: none;
+}
+.food-elective-items.active{
+    display: flex;
+}
+.food-elective-items div{
+    width: 33.3333%;
+    padding: 5px 15px;
+}
+.food-elective-items div img{
+    width: 100%;
+}
+.food-elective-item:hover h3{
+    color: var(--main-color1);
+}
+.food-elective-items div h3{
+    transition: all 0.3s ease;
+}
+.food-menu{
+     width: 98%;
+    text-align: center;
+    margin: auto;
+    box-shadow: 0 10px 15px rgb(0 0 0 / 15%);
+}
+.food-menu-button{
+    background-color: transparent;
+    border: none;
+    margin: 10px 12px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.food-menu-button.active{
+    color: var(--main-color1);
+}
+
+/*..........................service............................*/
+.service{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+}
+.service::before{
+    content: "";
+    position: absolute;
+    background-color: #d1d1d1;
+    width: 147px;
+    height: 899px;
+    left: 0;
+    top: 20.3%;
+    transform: translateX(-147px);
+}
+/*nếu add thông tin thì after và before ko twăng đc độ dài*/
+.service::after{
+    content: "";
+    position: absolute;
+    background-color: #d1d1d1;
+    width: 147px;
+    height: 899px;
+    right: 0;
+    top: 20.3%;
+    transform: translateX(147px);
+}
+.service-title-bottom{
+    width: 65%;
+    margin: 20px auto;
+    text-align: center;
+}
+.service-info-list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.service-info-list .service-info-list-row{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+    height: 295px;
+}
+.service-info-list-row .service-info{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    text-align: center;
+}
+.service-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.service-info div{
+    flex: 1;
+    /* margin-left: 5px; */
+    width: 50%;
+}
+.service-info-pic img{
+    width: 100%;
+}
+.service-info-list .service-info-list-row:nth-child(even) .service-info:nth-child(n+1){
+    flex-direction: row-reverse;
+}
+
+.advise{
+    margin: 50px auto;
+    width: 80%;
+    height: 100%;
+}
+.owl-nav{
+	position:absolute;
+	display:flex;
+	width:100%;
+	justify-content:space-between;
+	top:50%;
+	transform:translateY(-50%);
+}
+
+.owl-nav button span{
+	font-size:xx-large;
+}
+
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
+    background: 0 0;
+    color: inherit;
+    padding: 0!important;
+    font: inherit;
+    width: 50px;
+    border: 1px solid #8d7535 !important;
+    border-radius: 50%;
+    margin: 0px -25px;
+    opacity: .4;
+    display: block !important;
+    z-index: 99;
+}
+.owl-theme .owl-nav [class*=owl-]:hover {
+    background: transparent !important;
+    color: var(--main-color1) !important;
+    text-decoration: none;
+}
+.owl-theme .owl-dots .owl-dot {
+    display: none !important;
+}
+
+/* .menu-bar-extend {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+
+}
+.menu-bar-extend span{
+    display: block;
+     height: 2px;
+     width: 40px;
+     background-color: white;
+     position: relative;
+   
+}
+.menu-bar-extend.active{
+    position: fixed;
+    transform: translateX(250px);
+} */
+/* .menu-bar-extend span::before{
+    display: block;
+    height: 2px;
+    width: 40px;
+    content: "";
+    background-color: white;
+    position: absolute;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+.menu-bar-extend span::after{
+    display: block;
+    height: 2px;
+    width: 40px;
+    content: "";
+    background-color: white;
+    position: absolute;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+.menu-bar-extend.active span{
+   background-color: transparent;
+}
+.menu-bar-extend.active span::before{
+    transform: rotate(-145deg);
+ }
+.menu-bar-extend.active span::after{
+    transform:rotate(145deg);
+ } */
+
+/* .menu-bar-left{
+    position: fixed;
+    background-color: var(--main-color);
+    width: 250px;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    padding: 100px 50px;
+    transform: translateX(-100%);
+}
+.menu-bar-left.active{
+    transform: translateX(0);
+}
+.menu-bar-left a{
+    line-height: 50px;
+    font-size: 25px;
+} */
+
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+           
+
+
+  <form action="" method="POST" class="form-1 container">
+    <div class="form-group">
+      <label for="fullname">Tên đầy đủ:</label>
+      <input type="text" class="form-control" placeholder="VD:Phát Lê" id="fullname" name="fullname">
+      <span class="form_message"></span>
+    </div>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
+      <span class="form_message"></span>
+    </div>
+    <div class="form-group ">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" placeholder="Enter password" id="password" name="password">
+      <span class="form_message"></span>
+    </div>
+    <div class="form-group ">
+      <label for="password_confirmation">Nhập lại mật khẩu:</label>
+      <input type="password" class="form-control" placeholder="" id="password_confirmation" name="password_confirmation">
+      <span class="form_message"></span>
+    </div>
+    <div class="form-group ">
+      <label for="avatar">Chọn ảnh :</label>
+      <input type="file" class="form-control" placeholder="" id="avatar" name="avatar">
+      <span class="form_message"></span>
+    </div>
+ 
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <div><input name="gender" name="gender" class="form-check-input" value="male" type="checkbox"> Nam</div>
+        <div><input name="gender" class="form-check-input" value="female" type="checkbox"> Nữ</div>
+        <div><input name="gender" class="form-check-input" value="other" type="checkbox"> Khác</div>
+      </label>
+      <span class="form_message"></span>
+    </div>
+    <!-- <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox"> Remember me
+      </label>
+    </div> -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <script src="js/register.js"></script>
+  <script>
+    Validator({
+      form: '.form-1',
+      errorSelector: '.form_message',
+      formGroupSelector: '.form-group',
+      rules: [
+        Validator.isRequired('#fullname'),
+        Validator.isRequired('#email'),
+        Validator.isEmail('#email'),
+        Validator.isRequired('#password'),
+        Validator.isRequired('input[name="gender"]'),
+        Validator.isRequired('#avatar'),
+        Validator.minLenght('#password', 6, 'mat khau khong chinh xac'),
+        Validator.isRequired('#password_confirmation'),
+        Validator.isConfirmed('#password_confirmation',function(){
+          return document.querySelector('.form-1 #password').value;
+        }, 'mật khẩu nhập lai không chinh xác'),
+        
+      ],
+      onSubmit : function(data){
+        console.log(data)
+      }
+    });
+  </script>
+
+
+   <style>
+    .form-group.invalid .form-control {
+      border-color: #f33a58;
+    }
+
+    .form-group.invalid .form_message {
+      color: #f33a58;
+    }
+  </style>
+
+</body>
